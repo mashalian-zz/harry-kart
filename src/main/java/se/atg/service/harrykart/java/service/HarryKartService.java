@@ -49,7 +49,8 @@ public class HarryKartService {
         .filter(Objects::nonNull)
         .forEach(loop -> {
           int powerValue = loop.getLanes().get(participantLane - 1).getPowerValue();
-          double timeForThisLoop = getTimeForEachLoop(powerValue + participant.getBaseSpeed());
+          participant.setBaseSpeed(powerValue + participant.getBaseSpeed());
+          double timeForThisLoop = getTimeForEachLoop(participant.getBaseSpeed());
           double v =  participant.getTimeTakenForAllLoops() + timeForThisLoop;
           participant.setTimeTakenForAllLoops((v));
         });
@@ -57,7 +58,7 @@ public class HarryKartService {
     return participant;
   }
 
-  private double getTimeForEachLoop(int speed) {
+  private double getTimeForEachLoop(double speed) {
     return (double) LOOP_LENGTH / (double) speed;
   }
 }

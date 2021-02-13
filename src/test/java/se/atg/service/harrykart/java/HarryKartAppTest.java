@@ -34,7 +34,7 @@ public class HarryKartAppTest {
   private HarryKartService harryKartService;
 
   @BeforeEach
-  void initialize() throws IOException {
+  void initialize() {
     harryKartService = new HarryKartService();
   }
 
@@ -51,7 +51,6 @@ public class HarryKartAppTest {
   }
 
   @Test
-  @Disabled
   void verifyTopThreeForInput1() throws IOException {
     HarryKartRequest harryKartRequest = getHarryKartRequest("src/test/resources/input_1.xml");
 
@@ -64,7 +63,6 @@ public class HarryKartAppTest {
   }
 
   @Test
-  @Disabled
   void verifyTopThreeForInput2() throws IOException {
     HarryKartRequest harryKartRequest = getHarryKartRequest("src/test/resources/input_2.xml");
 
