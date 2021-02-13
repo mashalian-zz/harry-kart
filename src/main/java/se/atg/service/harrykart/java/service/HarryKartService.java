@@ -51,14 +51,13 @@ public class HarryKartService {
           int powerValue = loop.getLanes().get(participantLane - 1).getPowerValue();
           participant.setBaseSpeed(powerValue + participant.getBaseSpeed());
           double timeForThisLoop = getTimeForEachLoop(participant.getBaseSpeed());
-          double v =  participant.getTimeTakenForAllLoops() + timeForThisLoop;
-          participant.setTimeTakenForAllLoops((v));
+          participant.setTimeTakenForAllLoops(participant.getTimeTakenForAllLoops() + timeForThisLoop);
         });
 
     return participant;
   }
 
   private double getTimeForEachLoop(double speed) {
-    return (double) LOOP_LENGTH / (double) speed;
+    return (double) LOOP_LENGTH / speed;
   }
 }
