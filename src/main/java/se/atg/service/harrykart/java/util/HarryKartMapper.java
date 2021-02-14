@@ -16,7 +16,6 @@ public class HarryKartMapper {
       harryCartPlacements.add(HarryCartPlacement.builder()
           .horse(participant.getName())
           .position(i + 1)
-          .totalTimeTaken(participant.getTimeTakenForAllLoops())
           .build());
     }
     return Collections.unmodifiableList(harryCartPlacements);

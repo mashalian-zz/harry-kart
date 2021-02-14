@@ -14,7 +14,6 @@ public class HarryCartPlacement {
 
   private final Integer position;
   private final String horse;
-  private final double totalTimeTaken;
 
   @JsonPOJOBuilder(withPrefix = "")
   public static class Builder {
