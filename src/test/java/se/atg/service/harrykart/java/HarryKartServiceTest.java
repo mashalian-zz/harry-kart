@@ -3,11 +3,9 @@ package se.atg.service.harrykart.java;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +17,6 @@ import se.atg.service.harrykart.java.service.HarryKartService;
 @ExtendWith(SpringExtension.class)
 public class HarryKartServiceTest {
 
-  private final static URI harryKartApp = URI.create("http://localhost:8181/java/api/play");
   private final static String TIME_TO_BE_LUCKY = "TIMETOBELUCKY";
   private final static String CARGO_DOOR = "CARGO DOOR";
   private final static String HERCULES_BOKO = "HERCULES BOKO";
@@ -79,14 +76,7 @@ public class HarryKartServiceTest {
 
   private HarryKartRequest getHarryKartRequest(String source) throws IOException {
     FileInputStream fileInputStream = new FileInputStream(source);
-    return xmlMapper()
+    return new XmlMapper()
         .readValue(fileInputStream, HarryKartRequest.class);
-  }
-
-  private XmlMapper xmlMapper() {
-    SimpleFilterProvider filters = new SimpleFilterProvider();
-    filters.setFailOnUnknownId(false);
-    XmlMapper xmlMapper = new XmlMapper();
-    return xmlMapper;
   }
 }
